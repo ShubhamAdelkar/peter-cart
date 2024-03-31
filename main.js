@@ -5,6 +5,7 @@ import {
   onValue,
   push,
   ref,
+  remove,
 } from "firebase/database";
 import { Notyf } from "notyf";
 
@@ -26,7 +27,18 @@ const loader = document.querySelector(".loader");
 function displayList(data) {
   listElement.innerHTML = "";
   for (const key in data) {
-    addItemInList(data[key]);
+    const listItem = document.createElement("li");
+    listItem.textContent = data[key];
+    listItem.addEventListener("dblclick", async () => {
+      try {
+        remove(ref(database, `spiderlist/${key}`));
+        listElement.removeChild(listItem);
+        notyf.success("Item deleted successfully!");
+      } catch (error) {
+        notyf.error("Failed to delete an item");
+      }
+    });
+    listElement.prepend(listItem);
   }
 }
 
@@ -64,10 +76,4 @@ buttonElement.addEventListener("click", async () => {
 
 function clearInputValue() {
   inputElement.value = "";
-}
-
-function addItemInList(value) {
-  const listItem = document.createElement("li");
-  listItem.textContent = value;
-  listElement.appendChild(listItem);
 }
