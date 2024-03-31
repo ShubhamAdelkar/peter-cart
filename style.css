@@ -128,7 +128,7 @@ small a {
 
 @media only screen and (min-width: 768px) {
   #app {
-    max-width: 768px;
+    max-width: 760px;
     margin: 50px auto;
   }
 
@@ -137,7 +137,7 @@ small a {
   }
 
   .loader {
-    width: 768px;
+    width: 760px;
     height: 200px;
   }
 }
