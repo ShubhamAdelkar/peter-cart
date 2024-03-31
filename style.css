@@ -101,11 +101,8 @@ button:focus-visible {
 .list-box {
   list-style-type: none;
   gap: 6px;
-  padding: 0.7rem;
   display: flex;
   flex-wrap: wrap;
-  border-radius: 10px;
-  border: 1px solid #383838;
 }
 
 .list-box li {
