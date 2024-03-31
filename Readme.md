@@ -11,9 +11,12 @@ test project for firebase and firebase database. Spiderman theme. 🚀
 3. Notyf - toast message library
 ```
 
-## Demo & pictures
+## Pictures
 
-![image](https://github.com/ShubhamAdelkar/peter-cart/assets/117031893/705836d3-b18a-430f-abc7-9d5e5ceb0f6a)
+![image](https://github.com/ShubhamAdelkar/peter-cart/assets/117031893/c250dfcf-d511-4667-8284-a638939777a8)
+
+
+
 
 
 
