@@ -125,3 +125,19 @@ small {
 small a {
   text-decoration: none;
 }
+
+@media only screen and (min-width: 768px) {
+  #app {
+    max-width: 768px;
+    margin: 50px auto;
+  }
+
+  .hero {
+    width: 10rem;
+  }
+
+  .loader {
+    width: 768px;
+    height: 200px;
+  }
+}
