@@ -33,9 +33,9 @@ function displayList(data) {
       try {
         remove(ref(database, `spiderlist/${key}`));
         listElement.removeChild(listItem);
-        notyf.success("Item deleted successfully!");
+        notyf.success(`Item deleted successfully!`);
       } catch (error) {
-        notyf.error("Failed to delete an item");
+        notyf.error("Failed to delete Item.");
       }
     });
     listElement.prepend(listItem);
@@ -45,11 +45,18 @@ function displayList(data) {
 onValue(db, async (DataSnapshot) => {
   try {
     const data = await DataSnapshot.val();
-    displayList(data);
+    if (DataSnapshot.exists()) {
+      displayList(data);
+    } else {
+      listElement.innerHTML = `<li style="background-color: #383838;">No Items.</li>`;
+      setTimeout(() => {
+        notyf.error("Please add an Item.");
+      }, 2600);
+    }
     loader.style.display = "none";
   } catch (error) {
     loader.style.display = "none";
-    notyf.error("Failed to load data");
+    notyf.error("Failed to load data.");
   }
 });
 
