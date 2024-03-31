@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Martian Mono, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
@@ -53,6 +53,7 @@ input:hover {
 
 input::placeholder {
   text-align: center;
+  font-family: Martian Mono, system-ui;
 }
 
 button {
@@ -100,8 +101,11 @@ button:focus-visible {
 .list-box {
   list-style-type: none;
   gap: 6px;
+  padding: 0.7rem;
   display: flex;
   flex-wrap: wrap;
+  border-radius: 10px;
+  border: 1px solid #383838;
 }
 
 .list-box li {
