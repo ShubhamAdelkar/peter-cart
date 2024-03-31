@@ -121,3 +121,7 @@ small {
   margin-top: 1rem;
   font-size: 12px;
 }
+
+small a {
+  text-decoration: none;
+}

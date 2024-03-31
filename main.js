@@ -37,7 +37,7 @@ onValue(db, async (DataSnapshot) => {
     loader.style.display = "none";
   } catch (error) {
     loader.style.display = "none";
-    alert("Failed to load data");
+    notyf.error("Failed to load data");
   }
 });
 
