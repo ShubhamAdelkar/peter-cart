@@ -45,7 +45,9 @@ body {
   font-size: 1.2em;
   font-weight: 500;
   border-radius: 8px;
+  font-family: inherit;
   z-index: 1;
+  background: #383838;
   transition: all 0.2s;
   border: 2px solid transparent;
 }

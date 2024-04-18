@@ -70,7 +70,7 @@ onValue(db, async (DataSnapshot) => {
 
 if (!isOnline) {
   notyf.error("You are offline.");
-  buttonElement.disabled = true; // Disable button when offline
+  buttonElement.disabled = true;
 }
 
 // Handle online/offline changes
