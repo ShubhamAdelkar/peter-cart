@@ -13,11 +13,6 @@ test project for firebase and firebase database. Spiderman theme. 🚀
 
 ## Pictures
 
-![image](https://github.com/ShubhamAdelkar/peter-cart/assets/117031893/c250dfcf-d511-4667-8284-a638939777a8)
+![image](./public/readme1.webp)
 
-
-
-
-
-
-
+![image](./public/readme2.webp)
