@@ -19,6 +19,7 @@
 
 body {
   user-select: none;
+  overflow: hidden;
 }
 
 #app {
@@ -28,6 +29,7 @@ body {
   gap: 12px;
   flex-direction: column;
   text-align: center;
+  filter: blur(7px);
 }
 
 .hero {
@@ -134,6 +136,36 @@ small a {
   text-decoration: none;
 }
 
+.modal {
+  display: none;
+}
+
+.modal-content {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  margin-top: 60px;
+  min-height: 50vh;
+  width: 340px;
+  text-align: center;
+  top: 40%;
+  left: 50%;
+  padding: 30px;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 20px;
+  background-color: #383838;
+
+  & img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   #app {
     max-width: 760px;
@@ -147,5 +179,15 @@ small a {
   .loader {
     width: 760px;
     height: 200px;
+  }
+
+  .modal-content {
+    width: 740px;
+    padding: 40px;
+
+    & img {
+      width: 90vh;
+      border-radius: 14px;
+    }
   }
 }
