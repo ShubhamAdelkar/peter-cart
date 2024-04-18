@@ -19,13 +19,18 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const db = ref(database, "spiderlist");
 
-const appdiv = document.querySelector("#app");
+const appDiv = document.querySelector("#app");
+const credit = document.querySelector(".videoby");
+const videoElement = document.querySelector("#myVideo");
 const inputElement = document.querySelector(".input");
 const buttonElement = document.querySelector(".add-item");
 const listElement = document.querySelector(".list-box");
+const linkElement = document.querySelector(".link");
 const loader = document.querySelector(".loader");
 const instructionsModal = document.getElementById("instructionsModal");
 const closeModalBtn = document.querySelector(".close-modal");
+
+const isOnline = navigator.onLine;
 
 function displayList(data) {
   listElement.innerHTML = "";
@@ -63,24 +68,42 @@ onValue(db, async (DataSnapshot) => {
   }
 });
 
-buttonElement.addEventListener("click", async () => {
-  let value = inputElement.value.trim();
-  const isOnlyNumbers = /^\d+$/.test(value);
+if (!isOnline) {
+  notyf.error("You are offline.");
+  buttonElement.disabled = true; // Disable button when offline
+}
 
-  try {
-    if (value !== "") {
-      if (!isOnlyNumbers) {
-        await push(db, value);
-        clearInputValue();
-        notyf.success("Item added successfully!");
+// Handle online/offline changes
+window.addEventListener("online", () => {
+  notyf.success("You are back online.");
+  buttonElement.disabled = false;
+});
+
+window.addEventListener("offline", () => {
+  notyf.error("You are offline.");
+  buttonElement.disabled = true;
+});
+
+buttonElement.addEventListener("click", async () => {
+  if (isOnline) {
+    let value = inputElement.value.trim();
+    const isOnlyNumbers = /^\d+$/.test(value);
+
+    try {
+      if (value !== "") {
+        if (!isOnlyNumbers) {
+          await push(db, value);
+          clearInputValue();
+          notyf.success("Item added successfully!");
+        } else {
+          throw new Error("Numbers are not allowed!");
+        }
       } else {
-        throw new Error("Numbers are not allowed!");
+        throw new Error("Input cannot be empty!");
       }
-    } else {
-      throw new Error("Input cannot be empty!");
+    } catch (error) {
+      notyf.error(error.message);
     }
-  } catch (error) {
-    notyf.error(error.message);
   }
 });
 
@@ -93,14 +116,28 @@ const isFirstVisit = !localStorage.getItem("modalShown");
 
 if (isFirstVisit) {
   instructionsModal.style.display = "block";
+  buttonElement.disabled = true;
+  inputElement.disabled = true;
+  linkElement.style.display = "none";
+  loader.style.display = "none";
 } else {
-  appdiv.style.filter = "blur(0px)";
+  appDiv.style.filter = "blur(0px)";
+  videoElement.style.display = "none";
   document.body.style.overflow = "auto";
+  buttonElement.disabled = false;
+  inputElement.disabled = false;
+  credit.style.display = "none";
+  linkElement.style.display = "block";
 }
 
 closeModalBtn.addEventListener("click", () => {
   instructionsModal.style.display = "none";
-  appdiv.style.filter = "blur(0px)";
+  videoElement.style.display = "none";
+  appDiv.style.filter = "blur(0px)";
   document.body.style.overflow = "auto";
+  buttonElement.disabled = false;
+  inputElement.disabled = false;
+  credit.style.display = "none";
+  linkElement.style.display = "block";
   localStorage.setItem("modalShown", true);
 });

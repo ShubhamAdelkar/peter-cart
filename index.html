@@ -18,13 +18,18 @@
 <body>
   <div id="instructionsModal" class="modal">
     <div class="modal-content">
+      <h1>Welcome!</h1>
       <img src="./spidermanacrossthespiderverse.jpg" alt="">
       <p>
-        Type an item name & add, double-click to delete.
+        Enter the item's name to add it; double-click to remove it.
       </p>
       <button class="close-modal">Got it!</button>
     </div>
   </div>
+  <video id="myVideo" loop muted autoplay playsinline class="video">
+    <source src="./public/Comp_1_2_1.mp4" type="video/mp4">
+  </video>
+  <small class="videoby">video: nhantai</small>
   <div id="app">
     <img src="./peter.webp" alt="miles morales" class="hero">
     <input type="text" class="input" placeholder="Add items" name="input" id="input" maxlength="15">
@@ -32,7 +37,7 @@
     <div class="loader"></div>
     <ul class="list-box">
     </ul>
-    <small>by <a href="https://github.com/shubhamadelkar/peter-cart" target="_blank">imbachhu</a></small>
+    <small class="link">by <a href="https://github.com/shubhamadelkar/peter-cart" target="_blank">imbachhu</a></small>
   </div>
   <script type="module" src="/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>

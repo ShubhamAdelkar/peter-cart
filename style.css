@@ -23,13 +23,14 @@ body {
 }
 
 #app {
+  display: flex;
   max-width: 320px;
   margin: 50px auto;
-  display: flex;
   gap: 12px;
   flex-direction: column;
   text-align: center;
   filter: blur(7px);
+  transition: all 0.4s;
 }
 
 .hero {
@@ -105,6 +106,7 @@ button:focus-visible {
   gap: 6px;
   display: flex;
   flex-wrap: wrap;
+  transition: all 0.4s;
 }
 
 .list-box li {
@@ -137,22 +139,23 @@ small a {
 }
 
 .modal {
+  transition: all 0.4s;
   display: none;
 }
 
 .modal-content {
   position: fixed;
   display: flex;
+  text-align: justify;
   align-items: center;
   justify-content: center;
   z-index: 5;
-  margin-top: 60px;
   min-height: 50vh;
-  width: 340px;
-  text-align: center;
-  top: 40%;
+  width: 338px;
+  top: 50%;
   left: 50%;
   padding: 30px;
+  border: 1px solid transparent;
   transform: translate(-50%, -50%);
   flex-direction: column;
   gap: 20px;
@@ -164,12 +167,29 @@ small a {
     object-fit: cover;
     border-radius: 10px;
   }
+
+  & h1 {
+    display: none;
+  }
+}
+
+video {
+  display: none;
+}
+
+.videoby {
+  display: none;
+}
+
+.modal-content:hover {
+  border: 1px solid #0037b4;
 }
 
 @media only screen and (min-width: 768px) {
   #app {
+    filter: brightness(0%);
     max-width: 760px;
-    margin: 50px auto;
+    margin: 60px auto;
   }
 
   .hero {
@@ -181,14 +201,46 @@ small a {
     height: 200px;
   }
 
+  video {
+    position: fixed;
+    top: 0%;
+    z-index: 3;
+    display: block;
+    filter: brightness(70%) blur(10px);
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+    transition: all 0.4s;
+  }
+
+  .videoby {
+    display: block;
+    position: absolute;
+    padding: 16px;
+    font-size: xx-small;
+    color: #a0a0a0;
+    z-index: 4;
+    bottom: 0;
+    left: 0;
+  }
+
   .modal-content {
-    width: 740px;
+    min-width: 780px;
     padding: 40px;
+    background-color: transparent;
 
     & img {
-      display: block;
-      width: 90vh;
+      display: none;
+      max-width: 100vh;
       border-radius: 14px;
     }
+
+    & h1 {
+      display: block;
+    }
+  }
+
+  .modal-content:hover {
+    border: 1px solid transparent;
   }
 }
