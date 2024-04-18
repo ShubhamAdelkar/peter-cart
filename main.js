@@ -19,10 +19,13 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const db = ref(database, "spiderlist");
 
+const appdiv = document.querySelector("#app");
 const inputElement = document.querySelector(".input");
 const buttonElement = document.querySelector(".add-item");
 const listElement = document.querySelector(".list-box");
 const loader = document.querySelector(".loader");
+const instructionsModal = document.getElementById("instructionsModal");
+const closeModalBtn = document.querySelector(".close-modal");
 
 function displayList(data) {
   listElement.innerHTML = "";
@@ -84,3 +87,23 @@ buttonElement.addEventListener("click", async () => {
 function clearInputValue() {
   inputElement.value = "";
 }
+
+// Modal Logic
+const isFirstVisit = !localStorage.getItem("modalShown");
+
+if (isFirstVisit) {
+  instructionsModal.style.display = "block";
+} else {
+  appdiv.style.filter = "blur(0px)";
+}
+
+// closeBtn.addEventListener("click", () => {
+//   instructionsModal.style.display = "none";
+//   localStorage.setItem("modalShown", true);
+// });
+
+closeModalBtn.addEventListener("click", () => {
+  instructionsModal.style.display = "none";
+  appdiv.style.filter = "blur(0px)";
+  localStorage.setItem("modalShown", true);
+});
