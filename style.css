@@ -186,6 +186,7 @@ small a {
     padding: 40px;
 
     & img {
+      display: block;
       width: 90vh;
       border-radius: 14px;
     }

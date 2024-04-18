@@ -95,15 +95,12 @@ if (isFirstVisit) {
   instructionsModal.style.display = "block";
 } else {
   appdiv.style.filter = "blur(0px)";
+  document.body.style.overflow = "auto";
 }
-
-// closeBtn.addEventListener("click", () => {
-//   instructionsModal.style.display = "none";
-//   localStorage.setItem("modalShown", true);
-// });
 
 closeModalBtn.addEventListener("click", () => {
   instructionsModal.style.display = "none";
   appdiv.style.filter = "blur(0px)";
+  document.body.style.overflow = "auto";
   localStorage.setItem("modalShown", true);
 });
